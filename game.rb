@@ -26,7 +26,13 @@ class Game
     else
       new_turn = Turn.new(@player2, @turn_counter)
     end
-    new_turn.turn_check
+    new_turn.new_turn
+    new_turn.end_of_turn(@player1, @player2)
+    if new_turn.turn_check
+      create_turn
+    else
+      game_over
+    end
   end
 
   def game_over
